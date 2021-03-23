@@ -19,7 +19,7 @@ while($data_f = mysqli_fetch_row($query_f)){
     }else{ 
         $lokasi_file = $_FILES['foto']['tmp_name']; 
         $nama_file = $_FILES['foto']['name']; 
-        $direktori = 'foto/'.$nama_file; 
+        $direktori = '../foto/'.$nama_file; 
         if(move_uploaded_file($lokasi_file,$direktori)){ 
             if(!empty($foto)){ 
                 unlink("foto/$foto"); 
@@ -32,7 +32,7 @@ while($data_f = mysqli_fetch_row($query_f)){
                 //echo $sql; 
                 mysqli_query($koneksi,$sql); 
                 }
-            header("Location:profil.php?notif=editberhasil"); 
+            header("Location:index.php?include=profil?notif=editberhasil"); 
         } 
     } 
 ?>

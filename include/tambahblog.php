@@ -9,12 +9,7 @@
 
 <body class="hold-transition sidebar-mini layout-fixed">
   <div class="wrapper">
-    <?php include("includes/header.php") ?>
 
-    <?php include("includes/sidebar.php") ?>
-
-    <!-- Content Wrapper. Contains page content -->
-    <div class="content-wrapper">
       <!-- Content Header (Page header) -->
       <section class="content-header">
         <div class="container-fluid">
@@ -54,7 +49,7 @@
               <?php } ?>
             <?php } ?>
           </div>
-          <form class="form-horizontal" action="konfirmasitambahblog.php" method="POST">
+          <form class="form-horizontal" action="index.php?include=konfirmasi-tambah-blog" method="POST">
             <div class="card-body">
               <div class="form-group row">
                 <label for="kategori" class="col-sm-3 col-form-label">Kategori Blog</label>
@@ -102,11 +97,6 @@
 
   </section>
   <!-- /.content -->
-  </div>
-  <!-- /.content-wrapper -->
-  <?php include("includes/footer.php") ?>
-
-  </div>
   <!-- ./wrapper -->
   <script>
     $('.datepicker').datepicker({

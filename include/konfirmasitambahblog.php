@@ -16,5 +16,5 @@ if (empty($id_kategori_blog)) {
     $sql = "INSERT INTO `blog` (`id_blog`,`id_kategori_blog`,`id_user`,`tanggal`, `judul`, `isi`) VALUES ('$id_blog','$id_kategori_blog','$id_user', '$tanggal', '$judul', '$isi')";
     mysqli_query($koneksi, $sql);
     //echo 
-    header("Location:blog.php?notif=tambahberhasil");
+    header("Location:index.php?include=blog&notif=tambahberhasil");
 }

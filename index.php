@@ -15,7 +15,17 @@ if (isset($_GET["include"])) {
     include("include/konfirmasitambahbuku.php");
   } else if ($include == "konfirmasi-edit-buku") {
     include("include/konfirmasieditbuku.php");
-  }
+  } else if ($include == "konfirmasi-edit-profil") {
+    include("include/konfirmasieditprofil.php");
+  } else if ($include == "konfirmasi-edit-blog") {
+    include("include/konfirmasieditblog.php");
+  } else if ($include == "konfirmasi-tambah-blog") {
+    include("include/konfirmasitambahblog.php");
+  } else if ($include == "konfirmasi-edit-konten") {
+    include("include/konfirmasieditkonten.php");
+  } else if ($include == "konfirmasi-tambah-konten") {
+    include("include/konfirmasitambahkonten.php");
+  } 
 }
 ?>
 <!DOCTYPE html>
@@ -56,9 +66,24 @@ if (isset($_GET["include"])) {
             include("include/tambahbuku.php");
           } else if ($include == "edit-buku") {
             include("include/editbuku.php");
+          } else if ($include == "detail-buku") {
+            include("include/detailbuku.php");
           }else if ($include == "blog") {
-            include("include/blog.php");
-          
+            include("include/blog.php");                      
+          } else if ($include == "detail-blog") {
+            include("include/detailblog.php");
+          }else if ($include == "edit-blog") {
+            include("include/editblog.php");                      
+          }else if ($include == "tambah-blog") {
+            include("include/tambahblog.php");  
+          }else if ($include == "edit-konten") {
+            include("include/editkonten.php");                      
+          }else if ($include == "tambah-konten") {
+            include("include/tambahkonten.php");                      
+          } else if ($include == "detail-konten") {
+            include("include/detailkonten.php");
+          }else if ($include == "edit-profil") {
+            include("include/editprofil.php");          
           }else {
             include("include/profil.php");
           }

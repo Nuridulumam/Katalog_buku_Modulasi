@@ -20,17 +20,17 @@ if (isset($_SESSION['id_buku'])) {
         $foto;
     }
     if (empty($id_kategori_buku)) {
-        header("Location:index.php?include=edit-kategori-buku&data=" . $id_kategori_buku . "&notif=editkosong");
+        header("Location:index.php?include=edit-buku&data=".$id_kategori_buku."&notif=editkosong");
     } else if (empty($judul)) {
-        header("Location:index.php?include=edit-kategori-buku&data=" . $judul . "&notif=editkosong");
+        header("Location:index.php?include=edit-buku&data=".$judul."&notif=editkosong");
     } else if (empty($pengarang)) {
-        header("Location:index.php?include=edit-kategori-buku&data=" . $pengarang . "&notif=editkosong");
+        header("Location:index.php?include=edit-buku&data=".$pengarang."&notif=editkosong");
     } else if (empty($id_penerbit)) {
-        header("Location:index.php?include=edit-kategori-buku&data=" . $id_penerbit . "&notif=editkosong");
+        header("Location:index.php?include=edit-buku&data=".$id_penerbit."&notif=editkosong");
     } else if (empty($tahun_terbit)) {
-        header("Location:index.php?include=edit-kategori-buku&data=" . $tahun_terbit . "&notif=editkosong");
+        header("Location:index.php?include=edit-buku&data=".$tahun_terbit."&notif=editkosong");
     } else if (empty($tag)) {
-        header("Location:index.php?include=edit-kategori-buku&data=" . $tag . "&notif=editkosong");
+        header("Location:index.php?include=edit-buku&data=".$tag."&notif=editkosong");
     } else {
         $lokasi_file = $_FILES['cover']['tmp_name'];
         $nama_file = $_FILES['cover']['name'];
@@ -55,6 +55,6 @@ if (isset($_SESSION['id_buku'])) {
                 mysqli_query($koneksi, $sql_i);
             }
         }
-        header("Location:index.php?include=kategori-buku &notif=editberhasil");
+        header("Location:index.php?include=buku&notif=editberhasil");
     }
 }

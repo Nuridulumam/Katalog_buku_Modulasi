@@ -3,7 +3,6 @@
 
 <head>
   <?php
-  session_start();
   include('koneksi/koneksi.php');
   if (isset($_SESSION['id_user'])) {
     $id_user = $_SESSION['id_user'];
@@ -18,13 +17,7 @@
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
-  <div class="wrapper">
-    <?php include("includes/header.php") ?>
 
-    <?php include("includes/sidebar.php") ?>
-
-    <!-- Content Wrapper. Contains page content -->
-    <div class="content-wrapper">
       <!-- Content Header (Page header) -->
       <section class="content-header">
         <div class="container-fluid">
@@ -62,7 +55,7 @@
               <?php }?> 
             <?php }?>
           </div>
-          <form class="form-horizontal" method="POST" action="konfirmasieditprofil.php" enctype="multipart/form-data">
+          <form class="form-horizontal" method="POST" action="index.php?include=konfirmasi-edit-profil" enctype="multipart/form-data">
             <div class="card-body">
               <div class="form-group row"> 
                 <label for="foto" class="col-sm-12 col-form-label"> 
@@ -101,11 +94,6 @@
 
       </section>
       <!-- /.content -->
-    </div>
-    <!-- /.content-wrapper -->
-    <?php include("includes/footer.php") ?>
-
-  </div>
   <!-- ./wrapper -->
 
   <?php include("includes/script.php") ?>

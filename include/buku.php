@@ -145,7 +145,9 @@ if (isset($_SESSION['katakunci_buku'])) {
                     <td align="center">
                 <a href="index.php?include=edit-buku&data=<?php echo $id_buku; ?>" class="btn btn-xs btn-info">
                   <i class="fas fa-edit"></i> Edit</a>
-                <a href="javascript:if(confirm('Anda yakin ingin menghapus data <?php echo $buku; ?>?')) window.location.href='index.php?include=buku&aksi=hapus&data=<?php echo $id_buku; ?>¬if=hapusberhasil'" class="btn btn-xs btn-warning">
+                  <a href="index.php?include=detail-buku&data=<?php echo $id_buku; ?>" class="btn btn-xs btn-info">
+                  <i class="fas fa-eye"></i> Detail</a>
+                <a href="javascript:if(confirm('Anda yakin ingin menghapus data <?php echo $judul; ?>?')) window.location.href='index.php?include=buku&aksi=hapus&data=<?php echo $id_buku; ?>¬if=hapusberhasil'" class="btn btn-xs btn-warning">
                   <i class="fas fa-trash"></i> Hapus</a>
               </td>
                   </tr>

@@ -13,6 +13,13 @@ if ((isset($_GET['aksi'])) && (isset($_GET['data']))) {
     mysqli_query($koneksi, $sql_dm);
   }
 }
+if (isset($_POST["katakunci"])) {
+  $katakunci_blog = $_POST["katakunci"];
+  $_SESSION['katakunci_blog'] = $katakunci_blog;
+}
+if (isset($_SESSION['katakunci_blog'])) {
+  $katakunci_blog = $_SESSION['katakunci_blog'];
+}
 ?>
 
 <head>
@@ -43,14 +50,14 @@ if ((isset($_GET['aksi'])) && (isset($_GET['data']))) {
           <div class="card-header">
             <h3 class="card-title" style="margin-top:5px;"><i class="fas fa-list-ul"></i> Daftar Blog</h3>
             <div class="card-tools">
-              <a href="tambahblog.php" class="btn btn-sm btn-info float-right">
+              <a href="index.php?include=tambah-blog" class="btn btn-sm btn-info float-right">
                 <i class="fas fa-plus"></i> Tambah Blog</a>
             </div>
           </div>
           <!-- /.card-header -->
           <div class="card-body">
             <div class="col-md-12">
-              <form method="" action="">
+              <form method="POST" action="index.php?include=blog">
                 <div class="row">
                   <div class="col-md-4 bottom-10">
                     <input type="text" class="form-control" id="kata_kunci" name="katakunci">
@@ -95,10 +102,9 @@ if ((isset($_GET['aksi'])) && (isset($_GET['data']))) {
                 // menampilkan data blog dengan pagination
 
                 $sql_blog = "SELECT `b`.`id_blog`, `b`.`judul`, `b`.`tanggal`, `k`.`kategori_blog` FROM `blog` `b` INNER JOIN `kategori_blog` `k` ON `b`.`id_kategori_blog` = `k`.`id_kategori_blog`  ";
-                if (isset($_GET["katakunci"])) {
-                  $katakunci_blog = $_GET["katakunci"];
-                  $sql_blog .= "where `kategori_blog` LIKE '%$katakunci_blog%'";
-                }
+                if (!empty($katakunci_blog)){
+                  $sql_blog .= "where `judul` LIKE '%$katakunci_blog%'";
+                  }
                 $sql_blog .= " ORDER BY `k`.`kategori_blog`, `b`.`judul` limit $posisi, $batas ";
                 $query_blog = mysqli_query($koneksi, $sql_blog);
                 $posisi = 1;
@@ -114,9 +120,12 @@ if ((isset($_GET['aksi'])) && (isset($_GET['data']))) {
                     <td><?= $judul; ?></td>
                     <td><?= $tanggal; ?></td>
                     <td align="center">
-                      <a href="editblog.php?data=<?php echo $id_blog; ?>" class="btn btn-xs btn-info" title="Edit"><i class="fas fa-edit"></i></a>
-                      <a href="detailblog.php?data=<?php echo $id_blog; ?>" class="btn btn-xs btn-info" title="Detail"><i class="fas fa-eye"></i></a>
-                      <a href="javascript:if(confirm('Anda yakin ingin menghapus data <?php echo $judul; ?>?')) window.location.href = 'blog.php?aksi=hapus&data=<?php echo $id_blog; ?>¬if=hapusberhasil'" class="btn btn-xs btn-warning" class="btn btn-xs btn-warning"><i class="fas fa-trash" title="Hapus"></i></a>
+                    <a href="index.php?include=edit-blog&data=<?php echo $id_blog; ?>" class="btn btn-xs btn-info">
+                  <i class="fas fa-edit"></i> Edit</a>
+                  <a href="index.php?include=detail-blog&data=<?php echo $id_blog; ?>" class="btn btn-xs btn-info">
+                  <i class="fas fa-eye"></i> Detail</a>
+                <a href="javascript:if(confirm('Anda yakin ingin menghapus data <?php echo $judul; ?>?')) window.location.href='index.php?include=blog&aksi=hapus&data=<?php echo $id_blog; ?>¬if=hapusberhasil'" class="btn btn-xs btn-warning">
+                  <i class="fas fa-trash"></i> Hapus</a>
                     </td>
                   </tr>
                 <?php $posisi++;
@@ -130,10 +139,9 @@ if ((isset($_GET['aksi'])) && (isset($_GET['data']))) {
               <!-- pagination -->
               <?php
               $sql_jum = "SELECT `b`.`id_blog`, `b`.`judul`, `b`.`tanggal`, `k`.`kategori_blog` FROM `blog` `b` INNER JOIN `kategori_blog` `k` ON `b`.`id_kategori_blog` = `k`.`id_kategori_blog` ";
-              if (isset($_GET["katakunci"])) {
-                $katakunci_blog = $_GET["katakunci"];
-                $sql_jum .= " where `kategori_blog` LIKE '%$katakunci_blog%'";
-              }
+              if (!empty($katakunci_blog)){
+                $sql_jum .= " where `b`.`judul` LIKE '%$katakunci_blog%'";
+                }
               $sql_jum .= " ORDER BY `k`.`kategori_blog`, `b`.`Judul`";
               $query_jum = mysqli_query($koneksi, $sql_jum);
               $jum_data = mysqli_num_rows($query_jum);
@@ -146,45 +154,25 @@ if ((isset($_GET['aksi'])) && (isset($_GET['data']))) {
               } else {
                 $sebelum = $halaman - 1;
                 $setelah = $halaman + 1;
-                if (isset($_GET["katakunci"])) {
-                  $katakunci_blog = $_GET["katakunci"];
+                
                   if ($halaman != 1) {
-                    echo "<li class='page-item'> <a class='page-link' href='blog.php?katakunci=$katakunci_blog &halaman=1'>First</a></li>";
-                    echo "<li class='page-item'><a class='page-link' href='blog.php?katakunci=$katakunci_blog& halaman=$sebelum'> «</a></li>";
+                    echo "<li class='page-item'><a class='page-link' href='index.php?include=blog&halaman=1'>First</a></li>";
+                    echo "<li class='page-item'><a class='page-link' href='index.php?include=blog&halaman=$sebelum'>«</a></li>";
                   }
                   for ($i = 1; $i <= $jum_halaman; $i++) {
                     if ($i > $halaman - 5 and $i < $halaman + 5) {
                       if ($i != $halaman) {
-                        echo "<li class='page-item'><a class='page-link' href='blog.php?katakunci =$katakunci_blog&halaman=$i'> $i</a></li>";
-                      } else {
-                        echo "<li class='page-item'> <a class='page-link'>$i</a></li>";
-                      }
-                    }
-                  }
-                  if ($halaman != $jum_halaman) {
-                    echo "<li class='page-item'> <a class='page-link' href='blog.php?katakunci=$katakunci_blog &halaman=$setelah'>»</a></li>";
-                    echo "<li class='page-item'><a class='page-link' href='blog.php?katakunci= $katakunci_blog&halaman=$jum_halaman'> Last</a></li>";
-                  }
-                } else {
-                  if ($halaman != 1) {
-                    echo "<li class='page-item'><a class='page-link' href='blog.php?halaman=1'>First</a></li>";
-                    echo "<li class='page-item'><a class='page-link' href='blog.php? halaman=$sebelum'>«</a></li>";
-                  }
-                  for ($i = 1; $i <= $jum_halaman; $i++) {
-                    if ($i > $halaman - 5 and $i < $halaman + 5) {
-                      if ($i != $halaman) {
-                        echo "<li class='page-item'><a class='page-link' href='blog.php?halaman=$i'>$i</a></li>";
+                        echo "<li class='page-item'><a class='page-link' href='index.php?include=blog&halaman=$i'>$i</a></li>";
                       } else {
                         echo "<li class='page-item'><a class='page-link'>$i</a></li>";
                       }
                     }
                   }
                   if ($halaman != $jum_halaman) {
-                    echo "<li class='page-item'><a class='page-link' href='blog.php?halaman=$setelah'> »</a></li>";
-                    echo "<li class='page-item'><a class='page-link' href='blog.php? halaman=$jum_halaman'>Last</a></li>";
+                    echo "<li class='page-item'><a class='page-link' href='index.php?include=blog&halaman=$setelah'> »</a></li>";
+                    echo "<li class='page-item'><a class='page-link' href='index.php?include=blog&halaman=$jum_halaman'>Last</a></li>";
                   }
-                }
-              } ?>
+                }?>
             </ul>
           </div>
         </div>

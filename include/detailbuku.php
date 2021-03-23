@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
 <?php
-session_start();
 include('koneksi/koneksi.php');
 if (isset($_GET['data'])) {
   $id_buku = $_GET['data'];
@@ -25,13 +24,7 @@ if (isset($_GET['data'])) {
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
-  <div class="wrapper">
-    <?php include("includes/header.php") ?>
 
-    <?php include("includes/sidebar.php") ?>
-
-    <!-- Content Wrapper. Contains page content -->
-    <div class="content-wrapper">
       <!-- Content Header (Page header) -->
       <section class="content-header">
         <div class="container-fluid">
@@ -117,13 +110,6 @@ if (isset($_GET['data'])) {
 
       </section>
       <!-- /.content -->
-    </div>
-    <!-- /.content-wrapper -->
-    <?php include("includes/footer.php") ?>
-
-  </div>
-  <!-- ./wrapper -->
-
   <?php include("includes/script.php") ?>
 </body>
 

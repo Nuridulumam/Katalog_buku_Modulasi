@@ -38,7 +38,7 @@ while ($data = mysqli_fetch_row($query)) {
   <div class="card">
     <div class="card-header">
       <div class="card-tools">
-        <a href="editprofil.php" class="btn btn-sm btn-info float-right"><i class="fas fa-edit"></i> Edit Profil</a>
+        <a href="index.php?include=edit-profil" class="btn btn-sm btn-info float-right"><i class="fas fa-edit"></i> Edit Profil</a>
       </div>
     </div>
     <!-- /.card-header -->
@@ -59,7 +59,7 @@ while ($data = mysqli_fetch_row($query)) {
           </tr>
           <tr>
             <td width="20%"><strong>Foto<strong></td>
-            <td width="80%"><img src="foto/<?php echo $foto; ?>" class="img-fluid" width="200px;"></td>
+            <td width="80%"><img src="../foto/<?php echo $foto; ?>" class="img-fluid" width="200px;"></td>
           </tr>
           <tr>
             <td width="20%"><strong>Nama<strong></td>
