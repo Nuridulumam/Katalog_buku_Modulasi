@@ -20,13 +20,7 @@ if ((isset($_GET['aksi'])) && (isset($_GET['data']))) {
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
-  <div class="wrapper">
-    <?php include("includes/header.php") ?>
 
-    <?php include("includes/sidebar.php") ?>
-
-    <!-- Content Wrapper. Contains page content -->
-    <div class="content-wrapper">
       <!-- Content Header (Page header) -->
       <section class="content-header">
         <div class="container-fluid">
@@ -119,7 +113,7 @@ if ((isset($_GET['aksi'])) && (isset($_GET['data']))) {
                       <a href="detailkonten.php?data=<?php echo $id_konten; ?>" class="btn btn-xs btn-info" title="Detail"><i class="fas fa-eye"></i></a>
                       <a href="javascript:if(confirm('Anda yakin ingin menghapus data <?php echo $judul; ?>?')) window.location.href = 'konten.php?aksi=hapus&data=<?php echo $id_konten; ?>¬if=hapusberhasil'" class="btn btn-xs btn-warning" class="btn btn-xs btn-warning"><i class="fas fa-trash" title="Hapus"></i></a>
                     </td>
-                  </tr>`
+                  </tr>
                 <?php $posisi++;
                 } ?>
               </tbody>
@@ -193,11 +187,6 @@ if ((isset($_GET['aksi'])) && (isset($_GET['data']))) {
 
       </section>
       <!-- /.content -->
-    </div>
-    <!-- /.content-wrapper -->
-    <?php include("includes/footer.php") ?>
-
-  </div>
   <!-- ./wrapper -->
 
   <?php include("includes/script.php") ?>

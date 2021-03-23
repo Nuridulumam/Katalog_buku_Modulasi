@@ -11,6 +11,10 @@ if (isset($_GET["include"])) {
     include("include/konfirmasitambahkategoribuku.php");
   } else if ($include == "konfirmasi-edit-kategori-buku") {
     include("include/konfirmasieditkategoribuku.php");
+  } else if ($include == "konfirmasi-tambahbuku") {
+    include("include/konfirmasitambahbuku.php");
+  } else if ($include == "konfirmasi-edit-buku") {
+    include("include/konfirmasieditbuku.php");
   }
 }
 ?>
@@ -42,7 +46,20 @@ if (isset($_GET["include"])) {
             include("include/editkategoribuku.php");
           } else if ($include == "kategori-blog") {
             include("include/kategoriblog.php");
-          } else {
+          } else if ($include == "tag") {
+            include("include/tag.php");
+          } else if ($include == "konten") {
+            include("include/konten.php");
+          } else if ($include == "buku") {
+            include("include/buku.php");
+          } else if ($include == "tambah-buku") {
+            include("include/tambahbuku.php");
+          } else if ($include == "edit-buku") {
+            include("include/editbuku.php");
+          }else if ($include == "blog") {
+            include("include/blog.php");
+          
+          }else {
             include("include/profil.php");
           }
           ?>

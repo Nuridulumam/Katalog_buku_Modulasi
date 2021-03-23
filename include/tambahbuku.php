@@ -7,14 +7,7 @@
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
-  <div class="wrapper">
-    <?php include("includes/header.php") ?>
 
-    <?php include("includes/sidebar.php") ?>
-
-    <!-- Content Wrapper. Contains page content -->
-    <div class="content-wrapper">
-      <!-- Content Header (Page header) -->
       <section class="content-header">
         <div class="container-fluid">
           <div class="row mb-2">
@@ -53,7 +46,7 @@
               <?php } ?>
             <?php } ?>
           </div>
-          <form class="form-horizontal" action="konfirmasitambahbuku.php" method="post" enctype="multipart/form-data">
+          <form class="form-horizontal" action="index.php?include=konfirmasi-tambahbuku" method="post" enctype="multipart/form-data">
             <div class="card-body">
 
               <div class="form-group row">
@@ -154,12 +147,7 @@
   <!-- /.card -->
 
   </section>
-  <!-- /.content -->
-  </div>
-  <!-- /.content-wrapper -->
-  <?php include("includes/footer.php") ?>
 
-  </div>
   <!-- ./wrapper -->
 
   <?php include("includes/script.php") ?>

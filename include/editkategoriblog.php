@@ -65,7 +65,7 @@ if (isset($_GET['data'])) {
               <?php } ?>
             <?php } ?>
           </div>
-          <form class="form-horizontal" action="konfirmasieditkategoriblog.php" method="POST">
+          <form class="form-horizontal" action="index.php?includekonfirmasieditkategoriblog.php" method="POST">
             <div class="card-body">
               <div class="form-group row">
                 <label for="Kategori Blog" class="col-sm-3 col-form-label">Kategori Blog</label>
