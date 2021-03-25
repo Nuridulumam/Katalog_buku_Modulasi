@@ -9,8 +9,8 @@ if ((isset($_GET['aksi'])) && (isset($_GET['data']))) {
 }
 ?>
 <?php
-if (isset($_GET["katakunci"])) {
-  $katakunci_kategori = $_GET["katakunci"];
+if (isset($_POST["katakunci"])) {
+  $katakunci_kategori = $_POST["katakunci"];
   $_SESSION['katakunci_kategori'] = $katakunci_kategori;
 }
 if (isset($_SESSION['katakunci_kategori'])) {
@@ -52,13 +52,7 @@ if (isset($_SESSION['katakunci_kategori'])) {
     <!-- /.card-header -->
     <div class="card-body">
       <div class="col-md-12">
-        <?php if (!empty($_GET['notif'])) { ?>
-          <?php if ($_GET['notif'] == "tambahkosong") { ?>
-            <div class="alert alert-danger" role="alert"> Maaf data kategori buku wajib di isi</div>
-          <?php } ?>
-        <?php } ?>
-
-        <form action="index.php?include=kategori-buku" method="GET">
+        <form action="index.php?include=kategori-buku" method="post">
           <div class="row">
             <div class="col-md-4 bottom-10"> <input type="text" class="form-control" id="kata_kunci" name="katakunci"> </div>
             <div class="col-md-5 bottom-10"> <button type="submit" class="btn btn-primary"> <i class="fas fa-search"></i> Search</button> </div>
@@ -147,6 +141,7 @@ if (isset($_SESSION['katakunci_kategori'])) {
         } else {
           $sebelum = $halaman - 1;
           $setelah = $halaman + 1;
+
           if ($halaman != 1) {
             echo "<li class='page-item'><a class='page-link' href='index.php?include=kategori-buku&halaman=1'>First</a></li>";
             echo "<li class='page-item'><a class='page-link' href='index.php?include=kategori-buku&halaman=$sebelum'>«</a></li>";
@@ -161,11 +156,10 @@ if (isset($_SESSION['katakunci_kategori'])) {
             }
           }
           if ($halaman != $jum_halaman) {
-            echo "<li class='page-item'><a class='page-link' href='index.php?include=kategori-buku&halaman=$setelah'>»</a></li>";
+            echo "<li class='page-item'><a class='page-link' href='index.php?include=kategori-buku&halaman=$setelah'> »</a></li>";
             echo "<li class='page-item'><a class='page-link' href='index.php?include=kategori-buku&halaman=$jum_halaman'>Last</a></li>";
           }
-        }
-        ?>
+        } ?>
       </ul>
     </div>
   </div>

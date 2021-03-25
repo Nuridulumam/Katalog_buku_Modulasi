@@ -7,8 +7,8 @@ if ((isset($_GET['aksi'])) && (isset($_GET['data']))) {
     mysqli_query($koneksi, $sql_dh);
   }
 }
-if (isset($_GET["katakunci"])) {
-  $katakunci_kategori = $_GET["katakunci"];
+if (isset($_POST["katakunci"])) {
+  $katakunci_kategori = $_POST["katakunci"];
   $_SESSION['katakunci_kategori'] = $katakunci_kategori;
 }
 if (isset($_SESSION['katakunci_kategori'])) {
@@ -43,7 +43,7 @@ if (isset($_SESSION['katakunci_kategori'])) {
     <div class="card-header">
       <h3 class="card-title" style="margin-top:5px;"><i class="fas fa-list-ul"></i> Daftar Kategori Blog</h3>
       <div class="card-tools">
-        <a href="tambahkategoriblog.php" class="btn btn-sm btn-info float-right">
+        <a href="index.php?include=tambah-kategori-blog" class="btn btn-sm btn-info float-right">
           <i class="fas fa-plus"></i> Tambah Kategori Blog</a>
       </div>
     </div>
@@ -55,7 +55,7 @@ if (isset($_SESSION['katakunci_kategori'])) {
             <div class="alert alert-danger" role="alert"> Maaf data kategori blog wajib di isi</div>
           <?php } ?>
         <?php } ?>
-        <form method="GET" action="index.php?include=kategori-blog">
+        <form method="POST" action="index.php?include=kategori-blog">
           <div class="row">
             <div class="col-md-4 bottom-10">
               <input type="text" class="form-control" id="kata_kunci" name="katakunci">
@@ -100,7 +100,7 @@ if (isset($_SESSION['katakunci_kategori'])) {
           }
 
           $sql_k = "SELECT `id_kategori_blog`,`kategori_blog` FROM `kategori_blog` ";
-          if (isset($_GET["katakunci"])) {
+          if (!empty($katakunci_kategori)) {
             $sql_k .= "where `kategori_blog` LIKE '%$katakunci_kategori%'";
           }
           $sql_k .= " ORDER BY `kategori_blog` limit $posisi, $batas ";
@@ -131,7 +131,7 @@ if (isset($_SESSION['katakunci_kategori'])) {
         <!-- pagination -->
         <?php
         $sql_jum = "SELECT `id_kategori_blog`, `kategori_blog` from `kategori_blog` ";
-        if (isset($_GET["katakunci"])) {
+        if (!empty($katakunci_kategori)) {
           $sql_jum .= "where `kategori_blog` LIKE '%$katakunci_kategori%'";
         }
         $sql_jum .= " order by `kategori_blog`";
@@ -146,25 +146,25 @@ if (isset($_SESSION['katakunci_kategori'])) {
         } else {
           $sebelum = $halaman - 1;
           $setelah = $halaman + 1;
+
           if ($halaman != 1) {
-            echo "<li class='page-item'><a class='page-link' href='index.php?include=kategori-buku&halaman=1'>First</a></li>";
-            echo "<li class='page-item'><a class='page-link' href='index.php?include=kategori-buku&halaman=$sebelum'>«</a></li>";
+            echo "<li class='page-item'><a class='page-link' href='index.php?include=kategori-blog&halaman=1'>First</a></li>";
+            echo "<li class='page-item'><a class='page-link' href='index.php?include=kategori-blog&halaman=$sebelum'>«</a></li>";
           }
           for ($i = 1; $i <= $jum_halaman; $i++) {
             if ($i > $halaman - 5 and $i < $halaman + 5) {
               if ($i != $halaman) {
-                echo "<li class='page-item'><a class='page-link' href='index.php?include=kategori-buku&halaman=$i'>$i</a></li>";
+                echo "<li class='page-item'><a class='page-link' href='index.php?include=kategori-blog&halaman=$i'>$i</a></li>";
               } else {
                 echo "<li class='page-item'><a class='page-link'>$i</a></li>";
               }
             }
           }
           if ($halaman != $jum_halaman) {
-            echo "<li class='page-item'><a class='page-link' href='index.php?include=kategori-buku&halaman=$setelah'>»</a></li>";
-            echo "<li class='page-item'><a class='page-link' href='index.php?include=kategori-buku&halaman=$jum_halaman'>Last</a></li>";
+            echo "<li class='page-item'><a class='page-link' href='index.php?include=kategori-blog&halaman=$setelah'> »</a></li>";
+            echo "<li class='page-item'><a class='page-link' href='index.php?include=kategori-blog&halaman=$jum_halaman'>Last</a></li>";
           }
-        }
-        ?>
+        } ?>
       </ul>
     </div>
   </div>

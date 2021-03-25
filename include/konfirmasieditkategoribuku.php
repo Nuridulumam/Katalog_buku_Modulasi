@@ -9,6 +9,6 @@ if (isset($_SESSION['id_kategori_buku'])) {
     } else {
         $sql = "update `kategori_buku` set `kategori_buku`='$kategori_buku' where `id_kategori_buku`='$id_kategori_buku'";
         mysqli_query($koneksi, $sql);
-        header("Location:Location:index.php?include=edit-kategori-buku &notif=editberhasil");
+        header("Location:index.php?include=kategori-buku&notif=editberhasil");
     }
 }

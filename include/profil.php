@@ -1,20 +1,19 @@
-<?php
-include('koneksi/koneksi.php');
-$id_user = $_SESSION['id_user'];
-//get profil 
-$sql = "SELECT nama, email,foto from user where id_user='$id_user'";
-//echo $sql; 
-$query = mysqli_query($koneksi, $sql);
-while ($data = mysqli_fetch_row($query)) {
-  $nama = $data[0];
-  $email = $data[1];
-  $foto = $data[2];
-}
-?>
 <!DOCTYPE html>
 <html>
 
 <head>
+  <?php
+  $id_user = $_SESSION['id_user'];
+  //get profil 
+  $sql = "SELECT nama, email, foto from user where id_user='$id_user'";
+  //echo $sql; 
+  $query = mysqli_query($koneksi, $sql);
+  while ($data = mysqli_fetch_row($query)) {
+    $nama = $data[0];
+    $email = $data[1];
+    $foto = $data[2];
+  }
+  ?>
   <?php include("includes/head.php") ?>
 </head>
 
@@ -59,7 +58,7 @@ while ($data = mysqli_fetch_row($query)) {
           </tr>
           <tr>
             <td width="20%"><strong>Foto<strong></td>
-            <td width="80%"><img src="../foto/<?php echo $foto; ?>" class="img-fluid" width="200px;"></td>
+            <td width="80%"><img src="foto/<?php echo $foto; ?>" class="img-fluid" width="200px;"></td>
           </tr>
           <tr>
             <td width="20%"><strong>Nama<strong></td>
@@ -78,7 +77,5 @@ while ($data = mysqli_fetch_row($query)) {
   <!-- /.card -->
 
 </section>
-<!-- /.content -->
-
 
 </html>
