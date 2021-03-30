@@ -102,7 +102,7 @@ while ($data_k = mysqli_fetch_row($query_k)) {
       <h2>Blog Terbaru</h2><br>
       <div class="row mb-2">
         <?php
-        $sql_l = "SELECT `b`.`id_blog`, `b`.`judul`, DATE_FORMAT(`b`.`tanggal`, '%d-%m-%Y'), `k`.`kategori_blog` FROM `blog` `b` INNER JOIN `kategori_blog` `k` ON `b`. `id_kategori_blog` = `k`.`id_kategori_blog` ORDER BY `b`.`id_blog` DESC";
+        $sql_l = "SELECT `b`.`id_blog`, `b`.`judul`, DATE_FORMAT(`b`.`tanggal`, '%d-%m-%Y'), `k`.`kategori_blog` FROM `blog` `b` INNER JOIN `kategori_blog` `k` ON `b`. `id_kategori_blog` = `k`.`id_kategori_blog` ORDER BY `b`.`tanggal` DESC limit 2";
         $query_l = mysqli_query($koneksi, $sql_l);
         while ($data_l = mysqli_fetch_row($query_l)) {
           $id_blog = $data_l[0];

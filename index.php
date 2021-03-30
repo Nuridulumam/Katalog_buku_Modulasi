@@ -26,6 +26,8 @@
     // blog
     else if ($include == "daftar-blog") {
       include("includes/daftarblog.php");
+    } else if ($include == "blog") {
+      include("includes/blog.php");
     } else if ($include == "daftar-archive") {
       include("includes/daftararchive.php");
     } else {

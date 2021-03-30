@@ -18,11 +18,21 @@ if (isset($_GET['data'])) {
             <div class="row">
                 <div class="col-md-9 blog-main">
                     <div class="blog-post">
-                        <?php
-                        $sql_d = "SELECT `b`.`judul`,`b`.`isi`, `b`.`tanggal`, `k`.`kategori_blog`, `u`.`nama` FROM `blog` `b` INNER JOIN `kategori_blog` `k` ON `b`.`id_kategori_blog` = `k`.`id_kategori_blog` INNER JOIN `user` `u` ON `b`.`id_user`= `u`.`id_user` WHERE `b`.`tanggal`='$tanggal'";
+                        <?php       
+                         $batas = 1;
+                         if (!isset($_GET['halaman'])) {
+                           $posisi = 0;
+                           $halaman = 1;
+                         } else {
+                           $halaman = $_GET['halaman'];
+                           $posisi = ($halaman - 1) * $batas;
+                         }                 
+                        $sql_d = "SELECT `b`.`judul`,`b`.`isi`, `b`.`tanggal`, `k`.`kategori_blog`, `u`.`nama`, `b`.`id_blog` FROM `blog` `b` INNER JOIN `kategori_blog` `k` ON `b`.`id_kategori_blog` = `k`.`id_kategori_blog` INNER JOIN `user` `u` ON `b`.`id_user`= `u`.`id_user` WHERE `b`.`tanggal`='$tanggal'";                        
+                        $sql_d .= " ORDER BY `k`.`kategori_blog`, `b`.`judul` limit $posisi, $batas ";
                         $query_d = mysqli_query($koneksi, $sql_d);
-                        $jum_data = mysqli_num_rows($query_d);
-                        $hasil = ceil($jum_data);
+                        $posisi = 1;
+                        $jum_d = mysqli_num_rows($query_d);
+                        $hasil = ceil($jum_d);
                         while ($data_d = mysqli_fetch_row($query_d)) {
                             $kategori_blog = $data_d[3];
                             $judul = $data_d[0];
@@ -30,7 +40,8 @@ if (isset($_GET['data'])) {
                             $tanggal = $data_d[2];
                             $date = new DateTime($tanggal);
                             $nama = $data_d[4];
-                        }
+                            $id_blog = $data_d[5];
+                        
                         if ($hasil == 0) {
                         ?>
                             <h2 class='blog-post-title'>Data tidak ditemukan</h2>
@@ -40,15 +51,46 @@ if (isset($_GET['data'])) {
                     <h2 class='blog-post-title'><?= $judul ?></h2>
                     <p class='blog-post-meta'><?= $date->format('F d, Y') ?> by <a href='#'><?= $nama ?></a></p>
                     <p><?= $isi ?></p>
-                    <a href="index.php?include=detail-blog&data=<?php echo $id_kategori_blog; ?>" class="btn btn-primary stretched-link">Continue reading..</a>
-                </div><br><br><!-- /.blog-post -->
-                <nav class="blog-pagination">
-                    <a class="btn btn-outline-primary" href="#">Older</a>
-                    <a class="btn btn-outline-secondary disabled" href="#" tabindex="-1" aria-disabled="true">Newer</a>
-                </nav>
+                    <a href="index.php?include=detail-blog&data=<?php echo $id_blog; ?>" class="btn btn-primary">Continue reading..</a>
+                
+                
         <?php }
+        }
                     }
         ?>
+                </div><br><br><!-- /.blog-post -->
+                <nav class="blog-pagination">
+                <?php
+                
+          $sql_jum = "SELECT `b`.`judul`,`b`.`isi`, `b`.`tanggal`, `k`.`kategori_blog`, `u`.`nama`, `b`.`id_blog` FROM `blog` `b` INNER JOIN `kategori_blog` `k` ON `b`.`id_kategori_blog` = `k`.`id_kategori_blog` INNER JOIN `user` `u` ON `b`.`id_user`= `u`.`id_user` WHERE `b`.`tanggal`='$tanggal'";                 
+          $sql_jum .= " ORDER BY `k`.`kategori_blog`, `b`.`Judul`";
+          $query_jum = mysqli_query($koneksi, $sql_jum);
+          $jum_data = mysqli_num_rows($query_jum);
+          $jum_halaman = ceil($jum_data / $batas);
+
+          if ($jum_halaman == 0) {
+            echo 'tidak ada halaman';
+          } else if ($jum_halaman == 1) {
+            echo " <a class='btn btn-outline-secondary disabled' href='#' aria-disabled='true'>Older</a>";
+            echo "<a class='btn btn-outline-secondary disabled' href='#' tabindex='-1' aria-disabled='true'>Newer</a>";
+          } else {
+            $sebelum = $halaman - 1;
+            $setelah = $halaman + 1;
+
+            
+            if ($halaman > 1 && $halaman < $jum_halaman ) {
+                echo " <a class='btn btn-outline-primary' href='index.php?include=daftar-archive&data=$tanggal&halaman=$setelah' >Older</a>";
+                echo "<a class='btn btn-outline-primary'href='index.php?include=daftar-archive&data=$tanggal&halaman=$sebelum' >Newer</a>";
+            }
+            else if ($halaman != 1) {
+                echo " <a class='btn btn-outline-secondary disabled' href='index.php?include=daftar-archive&data=$tanggal&halaman=$setelah' aria-disabled='true' >Older</a>";
+                echo "<a class='btn btn-outline-primary' href='index.php?include=daftar-archive&data=$tanggal&halaman=$sebelum' tabindex='-1'>Newer</a>";
+            }            
+            else if ($halaman != $jum_halaman) {
+                echo " <a class='btn btn-outline-primary' href='index.php?include=daftar-archive&data=$tanggal&halaman=$setelah' >Older</a>";
+                echo "<a class='btn btn-outline-secondary disabled' href='index.php?include=daftar-archive&data=$tanggal&halaman=$sebelum' tabindex='-1' aria-disabled='true'>Newer</a>"; 
+            }
+          } ?>
             </div><!-- /.blog-main -->
 
             <aside class="col-md-3 blog-sidebar">

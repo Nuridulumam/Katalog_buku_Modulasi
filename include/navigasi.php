@@ -7,8 +7,8 @@
 
         <div class="collapse navbar-collapse" id="navbarsExample07">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
+                <li class="nav-item">
+                    <a class="nav-link" href="index.php">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="aboutus.php">About Us</a>
@@ -16,13 +16,18 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="dropdown07" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Kategori</a>
                     <div class="dropdown-menu" aria-labelledby="dropdown07">
-                        <a class="dropdown-item" href="daftarbuku.php">Java</a>
-                        <a class="dropdown-item" href="daftarbuku.php">PHP</a>
-                        <a class="dropdown-item" href="daftarbuku.php">HTML</a>
+                    <?php $sql_k = "SELECT `id_kategori_buku`,`kategori_buku` FROM `kategori_buku` ORDER BY `kategori_buku`";
+              $query_k = mysqli_query($koneksi, $sql_k);
+              while ($data_k = mysqli_fetch_row($query_k)) {
+                $id_kat = $data_k[0];
+                $kat = $data_k[1]; ?>
+                        <a class="dropdown-item" href="index.php?include=daftar-buku-kategori&data=<?= $id_kat; ?>"> <?php echo $kat; ?></a>
+                    
+              <?php } ?>
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="blog.php">Blog</a>
+                    <a class="nav-link" href="index.php?include=blog">Blog</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="contactus.php">Contact Us</a>

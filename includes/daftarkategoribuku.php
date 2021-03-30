@@ -64,24 +64,32 @@ if (isset($_GET['data'])) {
                 </div><!-- /.katalog-main -->
 
                 <aside class="col-md-3 katalog-sidebar">
-                    <div class="pl-4 pb-4">
-                        <h4 class="font-italic">Kategori</h4>
-                        <ol class="list-unstyled mb-0">
-                            <li><a href="#">Umum</a></li>
-                            <li><a href="#">PHP</a></li>
-                            <li><a href="#">Java</a></li>
-                            <li><a href="#">Database</a></li>
-                            <li><a href="#">Techno</a></li>
-                    </div>
+                   <!-- categories -->
+        <div class="pb-4">
+          <h5 class="font-italic bg-info text-white rounded p-2">Kategori</h5>
+          <ol class="list-group list-group-flush mb-0">
+            <?php $sql_k = "SELECT `id_kategori_buku`,`kategori_buku` FROM `kategori_buku` ORDER BY `kategori_buku`";
+            $query_k = mysqli_query($koneksi, $sql_k);
+            while ($data_k = mysqli_fetch_row($query_k)) {
+              $id_kat = $data_k[0];
+              $nama_kat = $data_k[1]; ?>
+              <li class="list-group-item"><a href="index.php?include=daftar-buku-kategori&data=<?php echo $id_kat; ?>"><?php echo $nama_kat; ?></a></li>
+            <?php } ?>
+          </ol>
+        </div>
 
-                    <div class="p-4">
-                        <h4 class="font-italic">Tag</h4>
-                        <ol class="list-unstyled">
-                            <li><a href="#">PHP</a></li>
-                            <li><a href="#">MySQL</a></li>
-                            <li><a href="#">Javascript</a></li>
-                        </ol>
-                    </div>
+        <!-- list tag buku -->
+        <h5 class="font-italic bg-info text-white rounded p-2">Tag</h5>
+        <ol class="list-group list-group-flush mb-5">
+          <?php $sql_t = "SELECT `id_tag`,`tag` FROM `tag` ORDER BY `tag`";
+          $query_t = mysqli_query($koneksi, $sql_t);
+          while ($data_t = mysqli_fetch_row($query_t)) {
+            $id_tag = $data_t[0];
+            $nama_tag = $data_t[1]; ?>
+            <li class="list-group-item"><a href="index.php?include=daftar-buku-tag&data=<?php echo $id_tag; ?>"> <?php echo $nama_tag; ?></a></li>
+          <?php } ?>
+        </ol>
+      </div>
                 </aside> <!-- /.katalog-sidebar -->
 
             </div><!-- /.row -->
