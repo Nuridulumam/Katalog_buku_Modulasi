@@ -111,7 +111,7 @@ if (isset($_GET['data'])) {
                 <!-- list archive blog -->
                 <h5 class="font-italic bg-info text-white rounded p-2">Archives</h5>
                 <ol class="list-group list-group-flush mb-5">
-                    <?php $sql_t = "SELECT `id_blog`,`tanggal` FROM `blog` ORDER BY `tanggal`";
+                    <?php $sql_t = "SELECT `id_blog`,`tanggal` FROM `blog` GROUP BY `tanggal`";
                     $query_t = mysqli_query($koneksi, $sql_t);
                     while ($data_t = mysqli_fetch_row($query_t)) {
                         $id_blog = $data_t[0];
