@@ -69,6 +69,12 @@
           </div>
         </div>
         <div class="form-group row">
+          <label for="sinopsis" class="col-sm-3 col-form-label">Sinopsis</label>
+          <div class="col-sm-7">
+            <textarea class="form-control" name="sinopsis" rows="12"></textarea>
+          </div>
+        </div>
+        <div class="form-group row">
           <label for="isi" class="col-sm-3 col-form-label">Isi</label>
           <div class="col-sm-7">
             <textarea class="form-control" name="isi" id="editor1" rows="12"></textarea>

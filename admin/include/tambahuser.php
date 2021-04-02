@@ -84,7 +84,7 @@
         <div class="form-group row">
           <label for="level" class="col-sm-3 col-form-label">Level</label>
           <div class="col-sm-7">
-            <select class="form-control" id="jurusan">
+            <select name="level" class="form-control" id="jurusan">
               <option value="superadmin">superadmin</option>
               <option value="admin">admin</option>
             </select>

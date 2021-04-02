@@ -13,7 +13,7 @@
                     if (isset($_GET['data'])) {
                         $id_blog = $_GET['data'];
 
-                        $sql_d = "SELECT `b`.`judul`,`b`.`isi`, `b`.`tanggal`, `k`.`kategori_blog`, `u`.`nama` FROM `blog` `b` INNER JOIN `kategori_blog` `k` ON `b`.`id_kategori_blog` = `k`.`id_kategori_blog` INNER JOIN `user` `u` ON `b`.`id_user`= `u`.`id_user` WHERE `b`.`id_blog`='$id_blog'";
+                        $sql_d = "SELECT `b`.`judul`,`b`.`isi`, `b`.`tanggal`, `k`.`kategori_blog`, `u`.`nama`FROM `blog` `b` INNER JOIN `kategori_blog` `k` ON `b`.`id_kategori_blog` = `k`.`id_kategori_blog` INNER JOIN `user` `u` ON `b`.`id_user`= `u`.`id_user` WHERE `b`.`id_blog`='$id_blog'";
                         $query_d = mysqli_query($koneksi, $sql_d);
                         while ($data_d = mysqli_fetch_row($query_d)) {
                             $kategori_blog = $data_d[3];
@@ -24,18 +24,27 @@
                             $nama = $data_d[4];
                         }
                     ?>
-
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb bg-info">
+                                <li class="breadcrumb-item"><a class="text-white" href="index.php?include=blog">Blog</a></li>
+                                <li class="breadcrumb-item text-white"><?= $kategori_blog; ?></li>
+                                <li class="breadcrumb-item active" aria-current="page"><?= $judul; ?></li>
+                            </ol>
+                        </nav>
+                        <hr>
                         <h2 class="blog-post-title"><?= $judul; ?></h2>
                         <p class="blog-post-meta"><?= $date->format('F d, Y'); ?> by <a href="#"><?= $nama; ?></a></p>
 
-                        <p><?= $isi; ?></p>
+                        <div class="container">
+                            <p class="text-justify"><?= $isi; ?></p>
+                        </div>
                     <?php
                     }
                     ?>
                 </div>
             </div>
             <!-- blog terkait -->
-            <aside class="col-md-3 blog-sidebar">
+            <div class="col-md-3 blog-sidebar">
                 <!-- categories -->
                 <div class="pb-4">
                     <h5 class="font-italic bg-info text-white rounded p-2">Kategori</h5>
@@ -61,7 +70,8 @@
                         <li class="list-group-item"><a href="index.php?include=daftar-archive&data=<?php echo $Tanggal; ?>"> <?php echo $Tanggal; ?></a></li>
                     <?php } ?>
                 </ol>
-            </aside>
+            </div>
 
         </div>
+    </main>
 </section>
