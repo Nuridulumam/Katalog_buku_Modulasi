@@ -5,14 +5,13 @@ if (isset($_GET['data'])) {
   $id_blog = $_GET['data'];
   $_SESSION['id_blog'] = $id_blog;
   //get data blog 
-  $sql_m = "SELECT `id_blog`,`id_kategori_blog`,`judul`, `sinopsis`, `isi` FROM `blog` WHERE `id_blog`='$id_blog'";
+  $sql_m = "SELECT `id_blog`,`id_kategori_blog`,`judul`, `isi` FROM `blog` WHERE `id_blog`='$id_blog'";
   $query_m = mysqli_query($koneksi, $sql_m);
   while ($data_m = mysqli_fetch_row($query_m)) {
     $id_blog = $data_m[0];
     $id_kategori_blog = $data_m[1];
     $judul = $data_m[2];
-    $sinopsis = $data_m[3];
-    $isi = $data_m[4];
+    $isi = $data_m[3];
   }
   //get tag 
 }
@@ -62,6 +61,15 @@ if (isset($_GET['data'])) {
     <form class="form-horizontal" action="index.php?include=konfirmasi-edit-blog" method="post" enctype="multipart/form-data">
       <div class="card-body">
         <div class="form-group row">
+          <label for="foto" class="col-sm-3 col-form-label">Cover blog </label>
+          <div class="col-sm-7">
+            <div class="custom-file">
+              <input type="file" class="custom-file-input" name="cover" id="customFile">
+              <label class="custom-file-label" for="customFile">Choose file</label>
+            </div>
+          </div>
+        </div>
+        <div class="form-group row">
           <label for="kategori" class="col-sm-3 col-form-label">Kategori blog</label>
           <div class="col-sm-7">
             <select class="form-control" id="kategori" name="kategori_blog">
@@ -80,12 +88,6 @@ if (isset($_GET['data'])) {
           <label for="judul" class="col-sm-3 col-form-label">Judul</label>
           <div class="col-sm-7">
             <input type="text" class="form-control" name="judul" id="judul" value="<?php echo $judul; ?>">
-          </div>
-        </div>
-        <div class="form-group row">
-          <label for="sinopsis" class="col-sm-3 col-form-label">Sinopsis</label>
-          <div class="col-sm-7">
-            <textarea class="form-control" name="sinopsis" rows="12"><?php echo $sinopsis; ?></textarea>
           </div>
         </div>
         <div class="form-group row">

@@ -30,16 +30,6 @@
       include("includes/blog.php");
     } else if ($include == "daftar-archive") {
       include("includes/daftararchive.php");
-    }
-    // about us
-    else if ($include == "about-us") {
-      include("includes/about.php");
-    }
-    // contact-us
-    else if ($include == "contact-us") {
-      include("includes/contact-us.php");
-    } else if ($include == "input-pesan") {
-      include("includes/input_contact-us.php");
     } else {
       include("include/index.php");
     }

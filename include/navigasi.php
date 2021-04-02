@@ -11,26 +11,26 @@
                     <a class="nav-link" href="index.php">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="index.php?include=about-us">About Us</a>
+                    <a class="nav-link" href="aboutus.php">About Us</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="dropdown07" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Kategori</a>
                     <div class="dropdown-menu" aria-labelledby="dropdown07">
-                        <?php $sql_k = "SELECT `id_kategori_buku`,`kategori_buku` FROM `kategori_buku` ORDER BY `kategori_buku`";
-                        $query_k = mysqli_query($koneksi, $sql_k);
-                        while ($data_k = mysqli_fetch_row($query_k)) {
-                            $id_kat = $data_k[0];
-                            $kat = $data_k[1]; ?>
-                            <a class="dropdown-item" href="index.php?include=daftar-buku-kategori&data=<?= $id_kat; ?>"> <?php echo $kat; ?></a>
-
-                        <?php } ?>
+                    <?php $sql_k = "SELECT `id_kategori_buku`,`kategori_buku` FROM `kategori_buku` ORDER BY `kategori_buku`";
+              $query_k = mysqli_query($koneksi, $sql_k);
+              while ($data_k = mysqli_fetch_row($query_k)) {
+                $id_kat = $data_k[0];
+                $kat = $data_k[1]; ?>
+                        <a class="dropdown-item" href="index.php?include=daftar-buku-kategori&data=<?= $id_kat; ?>"> <?php echo $kat; ?></a>
+                    
+              <?php } ?>
                     </div>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="index.php?include=blog">Blog</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="index.php?include=contact-us">Contact Us</a>
+                    <a class="nav-link" href="contactus.php">Contact Us</a>
                 </li>
             </ul>
             <form class="form-inline mt-2 mt-md-0">
