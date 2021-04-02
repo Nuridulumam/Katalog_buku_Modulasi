@@ -14,7 +14,7 @@ if (isset($_GET['data'])) {
     } ?>
     <section id="katalog-item">
         <main role="main" class="container">
-            <h2 class='text-primary'>Kaegori: <?php echo $kategori_buku; ?></h2><br><br>
+            <h2 class='text-primary'>Kategori: <?php echo $kategori_buku; ?></h2><br><br>
             <div class='row'>
                 <div class='col-md-9 katalog-main'>
                     <div class='row'>
@@ -33,7 +33,7 @@ if (isset($_GET['data'])) {
                         $sinopsis = $data_d[6];
                         $id_kategori_buku = $data_d[7];
                         $id_buku = $data_d[8];
-                    }
+                    
 
                     if ($hasil == 0) {
                         echo "<div class='col-md-4'>
@@ -57,7 +57,7 @@ if (isset($_GET['data'])) {
                                 </div>
                             </div>
                         </div>";
-                    }
+                    }}
                 }
                     ?>
                     </div><!-- .row-->
