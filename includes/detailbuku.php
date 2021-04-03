@@ -37,7 +37,6 @@
                 }
               }
             ?>
-
               <tr>
                 <td width="40%" rowspan="6">
                   <img src="admin/cover/<?php echo $cover; ?>" class="img-fluid" alt="<?php echo $judul_buku; ?>" title="<?php echo $judul_buku; ?>">
