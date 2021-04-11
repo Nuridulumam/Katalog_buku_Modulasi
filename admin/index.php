@@ -33,7 +33,7 @@ if (isset($_GET["include"])) {
     include("include/konfirmasieditpenerbit.php");
   }
   // Buku 
-  else if ($include == "konfirmasi-tambahbuku") {
+  else if ($include == "konfirmasi-tambah-buku") {
     include("include/konfirmasitambahbuku.php");
   } else if ($include == "konfirmasi-edit-buku") {
     include("include/konfirmasieditbuku.php");
@@ -59,6 +59,8 @@ if (isset($_GET["include"])) {
     include("include/konfirmasitambahuser.php");
   } else if ($include == "konfirmasi-edit-user") {
     include("include/konfirmasiedituser.php");
+  } else if ($include == "konfirmasi-ubah-password") {
+    include("include/konfirmasiubahpassword.php");
   }
 }
 ?>
@@ -114,9 +116,10 @@ if (isset($_GET["include"])) {
           } else if ($include == "edit-penerbit") {
             include("include/editpenerbit.php");
           }
-          // Konten - Buku - Blog
+          // Konten
           else if ($include == "konten") {
             include("include/konten.php");
+            // buku 
           } else if ($include == "buku") {
             include("include/buku.php");
           } else if ($include == "tambah-buku") {
@@ -125,6 +128,7 @@ if (isset($_GET["include"])) {
             include("include/editbuku.php");
           } else if ($include == "detail-buku") {
             include("include/detailbuku.php");
+            // blog
           } else if ($include == "blog") {
             include("include/blog.php");
           } else if ($include == "detail-blog") {
@@ -133,6 +137,7 @@ if (isset($_GET["include"])) {
             include("include/editblog.php");
           } else if ($include == "tambah-blog") {
             include("include/tambahblog.php");
+            // konten
           } else if ($include == "edit-konten") {
             include("include/editkonten.php");
           } else if ($include == "tambah-konten") {
@@ -149,6 +154,16 @@ if (isset($_GET["include"])) {
             include("include/tambahuser.php");
           } else if ($include == "detail-user") {
             include("include/detailuser.php");
+          } else if ($include == "edit-user") {
+            include("include/edituser.php");
+          } else if ($include == "ubah-password") {
+            include("include/ubahpassword.php");
+          }
+          // pesan
+          else if ($include == "pesan") {
+            include("include/pesan.php");
+          } else if ($include == "detail-pesan") {
+            include("include/detailpesan.php");
           } else {
             include("include/profil.php");
           }

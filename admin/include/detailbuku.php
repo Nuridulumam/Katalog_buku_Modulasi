@@ -53,7 +53,7 @@ if (isset($_GET['data'])) {
         <tbody>
           <tr>
             <td><strong>Cover Buku<strong></td>
-            <td><img src="cover/<?php echo $cover; ?>" class="img-fluid" width="200px;"></td>
+            <td><img src="cover/<?= $cover; ?>" class="img-fluid" width="200px;"></td>
           </tr>
           <tr>
             <td width="20%"><strong>Kategori Buku<strong></td>

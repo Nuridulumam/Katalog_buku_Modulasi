@@ -1,5 +1,4 @@
 <?php
-include('koneksi/koneksi.php');
 $id_kategori_blog = $_POST['kategori_blog'];
 $judul = $_POST['judul'];
 $sinopsis = $_POST['sinopsis'];

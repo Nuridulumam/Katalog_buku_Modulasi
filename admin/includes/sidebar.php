@@ -73,15 +73,25 @@
             <i class="nav-icon fab fa-blogger"></i>
             <p> Blog </p>
           </a>
-        </li> <?php //if ($_SESSION['level']=="Superadmin"){
-              ?> <li class="nav-item">
-          <a href="index.php?include=user" class="nav-link">
-
-            <i class="nav-icon fas fa-user-cog"></i>
-            <p> Pengaturan User </p>
+        </li>
+        <li class="nav-item">
+          <a href="index.php?include=pesan" class="nav-link">
+            <i class="nav-icon fas fa-inbox"></i>
+            <p> Pesan </p>
           </a>
-        </li> <?php //}
-              ?> <li class="nav-item">
+        </li>
+        <?php
+        if (isset($_SESSION['level'])) {
+          if ($_SESSION['level'] == "Superadmin") { ?>
+            <li class="nav-item">
+              <a href="index.php?include=user" class="nav-link">
+                <i class="nav-icon fas fa-user-cog"></i>
+                <p> Pengaturan User </p>
+              </a>
+            </li>
+        <?php }
+        } ?>
+        <li class="nav-item">
           <a href="index.php?include=ubah-password" class="nav-link">
             <i class="nav-icon fas fa-user-lock"></i>
             <p> Ubah Password </p>

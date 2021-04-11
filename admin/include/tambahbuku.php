@@ -44,7 +44,7 @@
         <?php } ?>
       <?php } ?>
     </div>
-    <form class="form-horizontal" action="index.php?include=konfirmasi-tambahbuku" method="post" enctype="multipart/form-data">
+    <form class="form-horizontal" action="index.php?include=konfirmasi-tambah-buku" method="post" enctype="multipart/form-data">
       <div class="card-body">
 
         <div class="form-group row">

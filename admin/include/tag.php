@@ -112,7 +112,7 @@ if (isset($_SESSION['katakunci_tag'])) {
               <td><?= $tag ?></td>
               <td align="center">
                 <a href="index.php?include=edit-tag&data=<?php echo $id_tag; ?>" class="btn btn-xs btn-info" title="Edit"><i class="fas fa-edit"></i> Edit</a>
-                <a href="javascript:if(confirm('Anda yakin ingin menghapus data <?php echo $judul; ?>?')) window.location.href = 'index.php?include=tag&aksi=hapus&data=<?php echo $id_tag; ?>¬if=hapusberhasil'" class="btn btn-xs btn-warning" class="btn btn-xs btn-warning"><i class="fas fa-trash" title="Hapus"></i> Hapus</a>
+                <a href="javascript:if(confirm('Anda yakin ingin menghapus data <?php echo $tag; ?>?')) window.location.href='index.php?include=tag&aksi=hapus&data=<?php echo $id_tag; ?>¬if=hapusberhasil'" class="btn btn-xs btn-warning" class="btn btn-xs btn-warning"><i class="fas fa-trash" title="Hapus"></i> Hapus</a>
               </td>
             </tr>
           <?php $posisi++;

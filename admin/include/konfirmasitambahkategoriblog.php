@@ -1,5 +1,4 @@
 <?php
-include('koneksi/koneksi.php');
 $kategori_blog = $_POST['kategori_blog'];
 if (empty($kategori_blog)) {
     header("Location:index.php?include=tambah-kategori-blog&notif=tambahkosong");

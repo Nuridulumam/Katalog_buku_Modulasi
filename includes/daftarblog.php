@@ -58,7 +58,7 @@ if (isset($_GET['data'])) {
                 <nav class="blog-pagination">
                     <?php
 
-                            $sql_jum = "SELECT `b`.`judul`,`b`.`isi`, `b`.`tanggal`, `k`.`kategori_blog`, `u`.`nama` FROM `blog` `b` INNER JOIN `kategori_blog` `k` ON `b`.`id_kategori_blog` = `k`.`id_kategori_blog` INNER JOIN `user` `u` ON `b`.`id_user`= `u`.`id_user` WHERE `b`.`id_kategori_blog`='$id_kategori_blog'";
+                            $sql_jum = "SELECT `b`.`judul`,`b`.`isi`, `b`.`tanggal`, `k`.`kategori_blog`, `u`.`nama`, `b`.`id_blog`, `b`.`sinopsis` FROM `blog` `b` INNER JOIN `kategori_blog` `k` ON `b`.`id_kategori_blog` = `k`.`id_kategori_blog` INNER JOIN `user` `u` ON `b`.`id_user`= `u`.`id_user` WHERE `b`.`id_kategori_blog`='$id_kategori_blog'";
                             $sql_jum .= " ORDER BY `k`.`kategori_blog`, `b`.`Judul`";
                             $query_jum = mysqli_query($koneksi, $sql_jum);
                             $jum_data = mysqli_num_rows($query_jum);

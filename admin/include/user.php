@@ -116,11 +116,11 @@ if (isset($_SESSION['katakunci_blog'])) {
               <td class="p-3"><?= $email; ?></td>
               <td class="p-3"><?= $level; ?></td>
               <td class="p-3" align="center">
-                <a href="index.php?include=edit-profil&data=<?php echo $id_user; ?>" class="btn btn-xs btn-info">
+                <a href="index.php?include=edit-user&data=<?php echo $id_user; ?>" class="btn btn-xs btn-info">
                   <i class="fas fa-edit"></i> </a>
                 <a href="index.php?include=detail-user&data=<?php echo $id_user; ?>" class="btn btn-xs btn-info">
                   <i class="fas fa-eye"></i> </a>
-                <a href="javascript:if(confirm('Anda yakin ingin menghapus data <?php echo $judul; ?>?')) window.location.href='index.php?include=user&aksi=hapus&data=<?php echo $id_user; ?>¬if=hapusberhasil'" class="btn btn-xs btn-warning">
+                <a href="javascript:if(confirm('Anda yakin ingin menghapus data <?php echo $id_user; ?>?')) window.location.href='index.php?include=user&aksi=hapus&data=<?php echo $id_user; ?>¬if=hapusberhasil'" class="btn btn-xs btn-warning">
                   <i class="fas fa-trash"></i> </a>
               </td>
             </tr>

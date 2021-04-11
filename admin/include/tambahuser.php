@@ -43,7 +43,7 @@
         <?php } ?>
       <?php } ?>
     </div>
-    <form class="form-horizontal" action="index.php?include=tambah-user">
+    <form class="form-horizontal" action="index.php?include=konfirmasi-tambah-user" method="POST" enctype="multipart/form-data">
       <div class="card-body">
         <div class="form-group row">
           <label for="foto" class="col-sm-12 col-form-label"><span class="text-info"><i class="fas fa-user-circle"></i> <u>Data User</u></span></label>
@@ -85,8 +85,8 @@
           <label for="level" class="col-sm-3 col-form-label">Level</label>
           <div class="col-sm-7">
             <select name="level" class="form-control" id="jurusan">
-              <option value="superadmin">superadmin</option>
-              <option value="admin">admin</option>
+              <option value="Superadmin">Superadmin</option>
+              <option value="Admin">Admin</option>
             </select>
           </div>
         </div>
